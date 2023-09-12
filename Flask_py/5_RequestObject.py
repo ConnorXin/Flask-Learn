@@ -25,7 +25,7 @@ def index():
         print(password)
         return 'this is post'
 
-重定向
+
 if __name__ == '__main__':
 
     app.run()
