@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Hello World
+<br>
+{{ data }}  <!--取值-->
+<br>
+{{ data['name'] }}  <!--取值方法1-->
+<br>
+{{ data.name }}  <!--取值方法1-->
+<br>
+mylist: {{ data.mylist }}
+<br>
+mylist: {{ data.mylist[3] }}
+<br>
+compute: {{ data.mylist[3] + data.mylist[5] }}  <!--还能计算-->
+<br>
+{{ 'hello_world' | upper }}  <!--'|': 过滤器, upper: 全部大写-->
+<br>
+{{ 'hello_world' | title }}  <!--首字母大写-->
+<br>
+{{ data.mylist | li2 }}  <!--自定义过滤器-->
+</body>
+</html>
