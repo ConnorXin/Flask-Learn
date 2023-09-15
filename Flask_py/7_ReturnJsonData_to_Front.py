@@ -15,7 +15,7 @@ app = Flask(__name__)
 # 使用 jsonify 方式进行修改前端数据类型时
 # 要解决编码问题使用以下方法
 app.json.ensure_ascii = False  # 支持中文
-# app.config['JSONIFY_MIMETYPE'] = "application/json;charset=utf-8"
+
 
 @app.route('/index')
 def index():

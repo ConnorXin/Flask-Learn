@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {#  3种导入css文件方法  #}
+{#    <link rel="stylesheet" href="../static/index.css">#}
+{#    <link rel="stylesheet" href="static/index.css">#}
+    <link rel="stylesheet" href="{{  url_for('static', filename='index.css' }}">
+</head>
+<body>
+    <h2>Index</h2>
+
+    <h4>name: {{ name }}</h4>
+</body>
+</html>
