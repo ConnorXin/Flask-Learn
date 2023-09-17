@@ -1,0 +1,34 @@
+{% extends 'child_1.html' %}
+
+{#  继承之后若直接修改父模板中的 block 会被覆盖  #}
+{% block head %}
+    {{ super() }}  <!--父模板信息就会保留-->
+    <p>python</p>
+{% endblock %}
+
+
+{% block content %}
+    <p>contents</p>
+    {#  html 中 嵌套 html 使用 include  #}
+    {% include 'child_2_include.html' %}
+{% endblock %}
+
+
+{# 宏定义: 类似 python 函数 #}
+{% macro person(name, age) %}
+    <b>name: {{ name }}; age: {{ age }}</b>
+{% endmacro %}
+
+{# 调用宏 #}
+{% block foot %}
+    {{ person("xin", 27) }}
+
+    <br>
+    {#  过滤器  #}
+    {{ 'hello_world' | upper }}  <!--'|': 过滤器, upper: 全部大写-->
+    <br>
+    {{ 'hello_world' | title }}  <!--首字母大写-->
+    <br>
+    {{ 'hello_world' | first }}  <!--取第一个字符-->
+
+{% endblock %}

@@ -12,6 +12,10 @@
         <option value="$MODULE_DIR$/Flask_Demo/2_TemplatesRender/templates" />
         <option value="$MODULE_DIR$/Flask_Demo/3_FlaskPro_Procedure/App/templates" />
         <option value="$MODULE_DIR$/Flask_Demo/4_FlaskPro_Request/App/templates" />
+        <option value="$MODULE_DIR$/Flask_Demo/6_FlaskPro_Cookie/App/templates" />
+        <option value="$MODULE_DIR$/Flask_Demo/7_FlaskPro_Session/App/templates" />
+        <option value="$MODULE_DIR$/Flask_Demo/8_FlaskPro_Templates/App/templates" />
+        <option value="$MODULE_DIR$/Flask_Demo/10_FlaskPro_ModelBasic/App/templates" />
       </list>
     </option>
   </component>

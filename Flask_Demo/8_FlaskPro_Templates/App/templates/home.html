@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+</head>
+<body>
+    <h2>home</h2>
+    <hr>
+
+    <h4>变量</h4>
+    <p>name: {{ name }}</p>
+    <p>age: {{ age }}</p>
+    <p>likes: {{ likes }}</p>
+
+    <h4>标签</h4>
+    <h5>if 语句</h5>
+    {% if age >= 18 %}
+        <p>{{ name }} 已经成年</p>
+    {% elif age >= 7 %}
+        <p>{{ name }} 可以上学了</p>
+    {% else %}
+        <p>{{ name }} 未成年</p>
+    {% endif %}
+
+    <h5>for 循环</h5>
+    {% for like in likes %}
+        <p>{{ like }}</p>
+
+        index: {{ loop.index }}
+        index0: {{ loop.index0 }}  <!--index 从0开始-->
+        indexRever: {{ loop.revindex }}  <!--index 倒叙-->
+        indexRever0: {{ loop.revindex0 }}  <!--index 从0开始倒叙-->
+
+    {% endfor %}
+
+
+    <h5>for 循环 - if 结合</h5>
+    {% for like in likes %}
+        {% if loop.first %}  <!--index 是第一个-->
+            <p style="color: darkred">{{ like }}</p>
+        {% elif loop.last %}  <!--index 是最后一个-->
+            <p style="color: darkblue">{{ like }}</p>
+        {% else %}
+            <p>{{ like }}</p>
+        {% endif %}
+    {% else %}  <!--for 出现问题执行 else-->
+        <b>else</b>
+    {% endfor %}
+
+
+</body>
+</html>
