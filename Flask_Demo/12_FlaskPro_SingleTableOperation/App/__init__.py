@@ -18,6 +18,11 @@ def create_app():
     app.register_blueprint(blueprint=blue)
 
     # mysql
+    db_uri = 'mysql+pymysql://root:333333@localhost:3306/flask_db1'
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+    # 初始化插件
+    init_exts(app=app)
 
     return app

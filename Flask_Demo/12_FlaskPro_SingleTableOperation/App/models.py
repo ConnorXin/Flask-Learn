@@ -6,13 +6,21 @@
 
 """
 """
-from exts import db
+from .exts import db
 
 
 class tableName(db.Model):
 
-    __tablename__ = 'name'
+    __tablename__ = 'user'
     # columns
-    id_ = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.String(30), unique=True)
+    age = db.Column(db.Integer, default=1)
 
+    def __repr__(self):
+        """
+        将对象 tableName 的打印转换成 self.name 的内容
+        :return:
+        """
+        return self.name
 
