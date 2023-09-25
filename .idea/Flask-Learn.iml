@@ -16,6 +16,7 @@
         <option value="$MODULE_DIR$/Flask_Demo/7_FlaskPro_Session/App/templates" />
         <option value="$MODULE_DIR$/Flask_Demo/8_FlaskPro_Templates/App/templates" />
         <option value="$MODULE_DIR$/Flask_Demo/10_FlaskPro_ModelBasic/App/templates" />
+        <option value="$MODULE_DIR$/Flask_Demo/12_FlaskPro_SingleTableOperation/App/templates" />
       </list>
     </option>
   </component>

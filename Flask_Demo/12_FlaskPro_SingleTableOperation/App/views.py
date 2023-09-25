@@ -6,7 +6,7 @@
 
 """
 """
-from flask import Blueprint
+from flask import Blueprint, request, render_template
 from sqlalchemy import desc, or_, not_
 
 from .models import *
@@ -250,5 +250,73 @@ def user_get_gt():
     print(list(users))
 
     return 'success'
+
+
+'''
+分页 翻页
+1 手动翻页
+    offset().limit()
+    数据: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 28, 19, 20
+    页码: page = 1
+    每页显示数量: per_page = 5
+    page = 1: 1, 2, 3, 4, 5        offset(0).limit(5)
+    page = 2: 6, 7, 8, 9, 10       offset(5).limit(5)
+    page = 3: 11, 12, 13, 14, 15   offset(10).limit(5)
+    page = 4: 16, 17, 18, 19, 20   offset(15).limit(5)
+    ...
+    page = n:                      offset((page - 1) * per_page).limit(per_page)
+2 paginate 对象进行翻页
+'''
+@blue.route('/paginate/')
+def get_paginate():
+
+    page = int(request.args.get('page', 1))  # html 参数页码
+    per_page = request.args.get('per_page', 5)
+    print(page, type(page))
+    print(per_page, type(per_page))
+
+    # paginate() 显示当前在第几页
+    # 查询数据
+    p = tableName.query.paginate(page=page, per_page=per_page, error_out=False)
+    '''
+    p 对象的属性
+    ! items: 返回当前页的内容列表
+    has_next: 是否还有下一页
+    has_prev: 是否还有上一页
+    next(error_out=False): 返回下一页的 Pagination 对象
+    prev(error_out=False): 返回上一页的 Pagination 对象
+    ! page: 当前页页码 (从1开始)
+    ! pages: 总页数
+    per_page: 每页显示的数量
+    prev_num: 上一页页码数
+    next_num: 下一页页码数
+    ! total: 查询返回的记录总数
+    '''
+    # items: 返回当前页的内容列表
+    print(p.items)
+    # has_next: 是否还有下一页
+    print(p.has_next)  # bool
+    # has_prev: 是否还有上一页
+    print(p.has_prev)
+    # next(error_out=False): 返回下一页的 Pagination 对象
+    print(p.next(error_out=False))
+    # prev(error_out=False): 返回上一页的 Pagination 对象
+    print(p.prev(error_out=False))
+    # page: 当前页页码 (从1开始)
+    print(p.page)
+    # pages: 总页数
+    print(p.pages)
+    # per_page: 每页显示的数量
+    print(p.per_page)
+    # prev_num: 上一页页码数
+    print(p.prev_num)
+    # next_num: 下一页页码数
+    print(p.next_num)
+    # total: 查询返回的记录总数
+    print(p.total)
+
+    return render_template('paginate.html', p=p)
+
+
 
 
